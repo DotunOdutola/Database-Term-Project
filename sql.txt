@@ -1,0 +1,35 @@
+SELECT * FROM Book b inner join Subject s on s.SubjectID = b.SubjectID where b.SupplierID=2
+SELECT Title,max(UnitPrice) FROM `Book` WHERE SupplierID=3
+SELECT distinct b.Title FROM Orders o inner join OrderDetail od on o.OrderID = od.OrderID inner join Book b on b.BookID = od.BookID inner join Customer c on c.CustomerID = o.CustomerID where c.LastName='lastname1' and c.FirstName='firstname1'
+SELECT * FROM Book where quantity > 10
+SELECT  sum(b.UnitPrice) FROM Orders o inner join OrderDetail od on o.OrderID = od.OrderID inner join Book b on b.BookID = od.BookID inner join Customer c on c.CustomerID = o.CustomerID where c.LastName='lastname1' and c.FirstName='firstname1'group by c.CustomerID
+SELECT c.FirstName, c.LastName FROM Orders o inner join OrderDetail od on o.OrderID = od.OrderID inner join Book b on b.BookID = od.BookID inner join Customer c on c.CustomerID = o.CustomerID group by c.CustomerID HAVING sum(b.UnitPrice) < 80
+SELECT b.Title from Book b inner join Supplier s on s.SupplierID = b.SupplierID where s.CompanyName='Supplier2'
+SELECT c.FirstName, c.LastName,sum(b.UnitPrice) FROM Orders o inner join OrderDetail od on o.OrderID = od.OrderID inner join Book b on b.BookID = od.BookID inner join Customer c on c.CustomerID = o.CustomerID group by c.CustomerID order by sum(b.UnitPrice) DESC
+SELECT b.Title,o.ShippedDate,s.ShipperName FROM Orders o inner join OrderDetail od on od.OrderID = o.OrderID inner join Book b on b.BookID=od.BookID inner join Shipper s on o.ShipperID = s.ShipperID where o.ShippedDate='8/4/2014'
+SELECT distinct b.Title FROM Orders o inner join OrderDetail od on o.OrderID = od.OrderID inner join Book b on b.BookID = od.BookID inner join Customer c on c.CustomerID = o.CustomerID where (c.LastName='lastname1' and c.FirstName='firstname1') or (c.LastName='lastname4' and c.FirstName='firstname4')
+SELECT distinct b.Title FROM Orders o inner join OrderDetail od on o.OrderID = od.OrderID inner join Book b on b.BookID = od.BookID inner join Employee e on e.EmployeeID= o.EmployeeID where (e.LastName='lastname6' or e.FirstName='firstname6') 
+SELECT b.BookID,b.Title,sum(od.Quantity) FROM Orders o inner join OrderDetail od on o.OrderID = od.OrderID inner join Book b on b.BookID = od.BookID group by b.BookID,b.Title ORDER BY od.Quantity
+SELECT c.FirstName,sum(od.Quantity) FROM Orders o inner join OrderDetail od on o.OrderID = od.OrderID inner join Customer c on c.CustomerID=o.CustomerID group by c.CustomerID having sum(od.Quantity)>2
+SELECT c.FirstName FROM Orders o inner join OrderDetail od on o.OrderID = od.OrderID inner join Customer c on c.CustomerID=o.CustomerID inner join Book b on od.BookID=b.BookID inner join Subject s on s.SubjectID=b.SubjectID where s.CategoryName='category3' or s.CategoryName='category4'group by c.CustomerID having sum(od.Quantity)>1
+SELECT c.FirstName FROM Orders o inner join OrderDetail od on o.OrderID = od.OrderID inner join Customer c on c.CustomerID=o.CustomerID inner join Book b on od.BookID=b.BookID where b.Author = 'author1'group by c.CustomerID having sum(od.Quantity)>1
+SELECT e.EmployeeID,sum(a.total) from Orders o inner join (select od.BookID,od.OrderID,od.Quantity*b.UnitPrice as total from Book b inner join OrderDetail od on od.BookID=b.BookID) a on a.orderId = o.OrderID inner join Employee e on e.EmployeeID=o.EmployeeID group by e.EmployeeID
+SELECT b.Title,sum(od.Quantity) FROM Orders o inner join OrderDetail od on o.OrderID = od.OrderID inner join Book b on b.BookID = od.BookID where o.ShippedDate>'8/4/2016'GROUP by b.Title
+SELECT c.FirstName, sum(od.Quantity) FROM Orders o inner join OrderDetail od on o.OrderID = od.OrderID inner join Customer c on c.CustomerID=o.CustomerID inner join Book b on od.BookID=b.BookID group by c.CustomerID having sum(od.Quantity)>1 order by od.Quantity
+SELECT c.FirstName,c.Phone FROM Orders o inner join OrderDetail od on o.OrderID = od.OrderID inner join Customer c on c.CustomerID=o.CustomerID inner join Book b on od.BookID=b.BookID group by c.CustomerID having sum(od.Quantity)>3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
