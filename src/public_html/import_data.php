@@ -1,10 +1,10 @@
 <?php
-/* connect to aco0008 */
+/* connect to database */
 
 $dbhost = "acadmysql.duc.auburn.edu";
-$dbuser = "aco0008";
-$dbpass = "chinedu11";
-$dbname = "aco0008db";
+$dbuser = "user";
+$dbpass = "pass";
+$dbname = "database";
 
 $connect = mysql_connect($dbhost, $dbuser, $dbpass);
 
