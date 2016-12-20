@@ -97,11 +97,11 @@
 
 	<?php
 	function execute($query){
-		$mysqli = new mysqli("acadmysql.duc.auburn.edu", "aco0008", "chinedu11");
+		$mysqli = new mysqli("acadmysql.duc.auburn.edu", "user", "pass");
     		if(!$mysqli) {
         		die();
     		}
-    		mysqli_select_db($mysqli, "aco0008db");
+    		mysqli_select_db($mysqli, "database");
     		if(!$mysqli) {
         		die();
     		}
